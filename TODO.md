@@ -2,9 +2,12 @@
 - [x] Forget password
 - [ ] phone signin
 - [ ] pin vervication
-- ###edit and update profile 
+- ### edit and update profile 
   - [ ] data
   - [ ] profile image
 - client DB 
+- Notications
+  - [ ] Android
+  - [ ] IOS
 - [ ] one device per account
 - [ ] multible devices per account

@@ -9,6 +9,7 @@
   - [ ] Auth0
 - [x] Api Service (Firebase)
 - [ ] Client Database (SqlLight)
+- [ ] Notifications
 - [ ] Cross Platform Desgin
 - [ ] Logs
 - [ ] 

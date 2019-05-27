@@ -2,12 +2,13 @@
 - [x] Forget password
 - [ ] phone signin
 - [ ] pin vervication
-- ### edit and update profile 
+- [ ] firestore
+- Edit and update profile 
   - [ ] data
   - [ ] profile image
 - client DB 
 - Notications
   - [ ] Android
-  - [ ] IOS
+  - [ ] IOS 
 - [ ] one device per account
 - [ ] multible devices per account

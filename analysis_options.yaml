@@ -1,0 +1,4 @@
+analyzer:
+  errors:
+    missing_required_param: warning
+    mixin_inherits_from_not_object: ignore

@@ -1,4 +1,6 @@
 import 'package:app2/src/states/states.dart';
+import 'package:app2/src/ui/screens/settings/account_edit_screen.dart';
+import 'package:app2/src/ui/screens/settings/edit_filed_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,16 +9,31 @@ import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:app2/src/ui/screens/screens.dart';
 
-List<Map<String, dynamic>> _r = <Map<String, dynamic>>[
-  // name , screen , auth , guest, roles
-  {"name": "/", "screen": HomeScreen(), "auth": false, "roles": []},
-  {"name": "/about", "screen": AboutScreen()},
-  {"name": "/signin", "screen": SigninScreen(), "guest": true},
-  {"name": "/sigup", "screen": SignupScreen(), "guest": true},
-  {"name": "/private", "screen": PrivateScreen(), "auth": true},
-  // ? last elememnt must be not found route
-  {"name": "*", "screen": NotFoundScreen()}
-];
+List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
+      // name , screen , auth , guest, roles
+      {"name": "/", "screen": HomeScreen(), "auth": false, "roles": []},
+      {"name": "/about", "screen": AboutScreen()},
+      {"name": "/signin", "screen": SigninScreen(), "guest": true},
+      {"name": "/sigup", "screen": SignupScreen(), "guest": true},
+      {"name": "/private", "screen": PrivateScreen(), "auth": true},
+      // users
+      // ? Settings
+      {"name": "/settings", "screen": SettingsListScreen(), "auth": true},
+      {"name": "/settings/app", "screen": AppSettingsScreen(), "auth": true},
+      {
+        "name": "/settings/account",
+        "screen": AccountSettingsScreen(),
+        "auth": true
+      },
+      {
+        "name": "/settings/account/edit-email",
+        "screen": EmailEditScreen(),
+        "auth": true
+      },
+
+      // ? last elememnt must be not found route
+      {"name": "*", "screen": NotFoundScreen()}
+    ];
 
 /**
  * 
@@ -31,7 +48,8 @@ Route routes(RouteSettings s) {
 
 // get route from routes list
 Map<String, dynamic> _getRoute(RouteSettings s) {
-  return _r.singleWhere((i) => i['name'] == s.name, orElse: () => _r.last);
+  return _r(s)
+      .singleWhere((i) => i['name'] == s.name, orElse: () => _r(s).last);
 }
 
 /**

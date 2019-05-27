@@ -120,10 +120,10 @@ class AppLocalizations {
         'Terms of Service',
         name: 'termsOfService');
   }
-  String get privacyPolixy {
+  String get privacyPolicy {
     return Intl.message(
         'Privacy Policy',
-        name: 'privacyPolixy');
+        name: 'privacyPolicy');
   }
 
   String get enterYourPhoneMsg {
@@ -136,6 +136,7 @@ class AppLocalizations {
       name: 'invalidPhoneNumber',
     );
   }
+  
 
   String get enterVerifiCodeMsg {
     return Intl.message('Enter varification code', name: 'enterVerifiCodeMsg');
@@ -181,6 +182,51 @@ class AppLocalizations {
   String get btnAgree {
     return Intl.message('Agree', name: 'btnAgree');
   }
+  // ? Settings
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+    );
+  }
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+    );
+  }
+  String get notifications {
+    return Intl.message(
+      'notifications',
+      name: 'notifications',
+    );
+  }
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+    );
+  }
+  String get contact {
+    return Intl.message(
+      'Contact us',
+      name: 'contact',
+    );
+  }
+  
+  String get permissions {
+    return Intl.message(
+      'Permissions',
+      name: 'permissions',
+    );
+  }
+   String get share {
+    return Intl.message(
+      'Share',
+      name: 'share',
+    );
+  }
+
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

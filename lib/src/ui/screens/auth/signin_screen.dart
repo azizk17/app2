@@ -16,6 +16,17 @@ class SigninScreen extends StatelessWidget {
   final GlobalKey<FormBuilderState> _fbKey =
       GlobalKey<FormBuilderState>(debugLabel: "_loginForm");
   // login service call
+  // ! For TESTING
+  // 
+  void _mockSginin(BuildContext context) async {
+    var _p = Provider.of<AuthState>(context);
+    var auth = await _p.mockSginin();
+    if (auth == AuthStatus.Successful) {
+      _p.reset();
+      Navigator.popAndPushNamed(context, "/");
+    }
+  }
+
   void _login(BuildContext context) async {
     var _p = Provider.of<AuthState>(context);
     _fbKey.currentState.save();
@@ -51,9 +62,7 @@ class SigninScreen extends StatelessWidget {
         _showError(context),
         SizedBox(height: 10),
         _form(context),
-        SizedBox(
-          height: 20
-        ),
+        SizedBox(height: 20),
         _forgetPassword(context),
         SizedBox(height: 5),
         _createAccount(context),
@@ -128,25 +137,31 @@ class SigninScreen extends StatelessWidget {
           : Text(AppLocalizations.of(context).btnSend),
       onPressed: authProvider.authStatus == AuthStatus.Busy
           ? null
-          : () => this._login(context),
+          : () => this._mockSginin(context),
     );
   }
-Widget _forgetPassword(BuildContext context) {
-  return Row(children: <Widget>[
-    InkWell(
-      child: Text('${AppLocalizations.of(context).passwordRest}'),
-      onTap: () => null,
-    )
-  ],);
-}
-Widget  _createAccount(BuildContext context) {
-  return Row(children: <Widget>[
-    InkWell(
-      child: Text('${AppLocalizations.of(context).btnRegister}'),
-      onTap: () => null,
-    )
-  ],);
-}
+
+  Widget _forgetPassword(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        InkWell(
+          child: Text('${AppLocalizations.of(context).passwordRest}'),
+          onTap: () => null,
+        )
+      ],
+    );
+  }
+
+  Widget _createAccount(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        InkWell(
+          child: Text('${AppLocalizations.of(context).btnRegister}'),
+          onTap: () => null,
+        )
+      ],
+    );
+  }
 
   Widget _form(BuildContext context) {
     return FormBuilder(

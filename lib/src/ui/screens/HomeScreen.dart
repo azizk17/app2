@@ -55,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                                 '${AppLocalizations.of(context).btnLogout}'),
                             onPressed: () async {
-                              
                               await authProvider.signOut();
                             },
                           ),
@@ -70,26 +69,45 @@ class HomeScreen extends StatelessWidget {
           child: ListView.builder(
             itemCount: _list.length,
             itemBuilder: (BuildContext context, int index) {
-              if (_list[index].containsKey("auth") && !authProvider.isLoggendIn) {
+              if (_list[index].containsKey("auth") &&
+                  !authProvider.isLoggendIn) {
                 return Container();
-              } 
+              }
               return _item(context, _list[index]);
             },
           ),
-        )
+        ),
+        _actions(context),
       ],
     );
   }
+
   Widget _item(BuildContext context, Map list) {
     return ListTile(
-                dense: true,
-                title: Text(
-                  list['text'].toString(),
-                  style: TextStyle(color: Colors.blueGrey, fontSize: 16),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, list['route']);
-                },
-              );
-  } 
+      dense: true,
+      title: Text(
+        list['text'].toString(),
+        style: TextStyle(color: Colors.blueGrey, fontSize: 16),
+      ),
+      onTap: () {
+        Navigator.pushNamed(context, list['route']);
+      },
+    );
+  }
+
+  Widget _actions(BuildContext context) {
+    var authProvider = Provider.of<AuthState>(context);
+
+    return Row(
+      children: <Widget>[
+        if (authProvider.isLoggendIn) ...{
+          IconButton(
+            icon: Icon(Icons.settings),
+            iconSize: 30,
+            onPressed: () => Navigator.pushNamed(context, '/settings'), 
+          )
+        }
+      ],
+    );
+  }
 }

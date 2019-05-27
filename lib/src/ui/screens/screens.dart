@@ -4,3 +4,9 @@ export './about_screen.dart';
 export './private_screen.dart';
 export './auth/signin_screen.dart';
 export './auth/signup_screen.dart';
+// users
+export './users/profile_screen.dart';
+export './users/edit_filed.dart';
+export './settings/settings_list_screen.dart';
+export './settings/account_settings_screen.dart';
+export './settings/app_settings_screen.dart';

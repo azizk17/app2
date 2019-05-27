@@ -37,29 +37,10 @@ class AuthForm {
   }
 }
 
-class FormError {
-  final String code;
-  final String message;
-  final String filed;
-  FormError({this.code = "", this.message = "", this.filed = ""});
-  FormError copyWith({String code, String message, String filed}) {
-    return FormError(
-      code: code ?? this.code,
-      message: message ?? this.message,
-      filed: filed ?? this.filed,
-    );
-  }
-
-  @override
-  String toString() {
-    // TODO: implement toString
-    return "Error code: $code in $filed";
-  }
-}
-
 class AuthState extends BaseState {
   // TODO: Form validitions and trim
   final _authRepo = AuthRepository();
+  // ? Mock login - TESTING
 
   User get authUser => _authUser;
   User _authUser;
@@ -101,6 +82,7 @@ class AuthState extends BaseState {
     this._setAuthUser(null);
     notifyListeners();
   }
+
   Future<AuthStatus> _register(
       {@required Map<String, String> credentials, AuthMethod method}) async {
     try {
@@ -132,7 +114,8 @@ class AuthState extends BaseState {
     try {
       _setAuthStatus(AuthStatus.Busy);
 
-      User _user = await _authRepo.signIn(credentials: credentials, method: method);
+      User _user =
+          await _authRepo.signIn(credentials: credentials, method: method);
       _setAuthStatus(AuthStatus.Successful);
       _setAuthUser(_user);
 
@@ -182,5 +165,20 @@ class AuthState extends BaseState {
     _setAuthError(null);
     _setAuthStatus(null);
     super.reset();
+  }
+
+  Future<AuthStatus> mockSginin({String id}) async {
+    _setAuthStatus(AuthStatus.Busy);
+    User u = User((b) => [
+          b..id = '22Test',
+          b..name = 'aziz',
+          b..email = 'aziz@aziz.com',
+          b..phone = '000989732',
+        ]);
+   await Future.delayed(const Duration(milliseconds: 2000));
+    var status = AuthStatus.Successful; // or faild
+    _setAuthStatus(status);
+    _setAuthUser(u);
+    return Future.value(status);
   }
 }

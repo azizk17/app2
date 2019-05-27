@@ -34,6 +34,7 @@ dependencies:
   rxdart: ^0.22.0
   get_it: ^1.0.3
   flushbar: ^1.5.0
+  validators: ^2.0.0+1
   flutter_form_builder: ^3.0.1
   firebase_auth: ^0.11.1
   cloud_firestore: ^0.11.0+2
@@ -65,7 +66,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/login.png
-  #  - images/a_dot_ham.jpeg
+   - assets/001-lock.png
+   - assets/002-gear.png
+   - assets/003-pin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

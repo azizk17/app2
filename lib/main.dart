@@ -16,10 +16,11 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(builder: (_) => LocaleBloc()),
         ChangeNotifierProvider(builder: (_) => AppSettingsBloc()),
         ChangeNotifierProvider(builder: (_) => AuthState()),
+        ChangeNotifierProvider(builder: (_) => UsersState()),
       ],
       child: MaterialApp(
-
-        showPerformanceOverlay: true,
+        // ? debug
+        showPerformanceOverlay: false,
         locale: Locale('en', ''),
       localizationsDelegates: [
         const AppLocalizationsDelegate(),

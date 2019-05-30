@@ -12,4 +12,7 @@
   - [ ] Android
   - [ ] IOS 
 - [ ] one device per account
+- [ ] Permissions
+- [ ] Notifications
+- [ ] share
 - [ ] multible devices per account

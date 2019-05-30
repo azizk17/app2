@@ -8,16 +8,24 @@ import 'package:app2/src/states/states.dart';
 List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
       // name , screen , auth , guest, roles
       {"name": "/", "screen": HomeScreen(), "auth": false, "roles": []},
-      {"name": "/about", "screen": AboutScreen()},
       {"name": "/signin", "screen": SigninScreen(), "guest": true},
       {"name": "/sigup", "screen": SignupScreen(), "guest": true},
       {"name": "/private", "screen": PrivateScreen(), "auth": true},
       // users
       // ? Settings
+
       {"name": "/settings", "screen": SettingsScreen(), "auth": true},
+      {"name": "/settings/about", "screen": AboutScreen()},
+      {"name": "/settings/contact", "screen": ContactScreen()},
+      {"name": "/settings/app", "screen": GeneralScreen(), "auth": true},
       {
-        "name": "/settings/app",
-        "screen": GeneralScreen(),
+        "name": "/settings/notifications",
+        "screen": NotificationsScreen(),
+        "auth": true
+      },
+      {
+        "name": "/settings/permissions",
+        "screen": PermissionsScreen(),
         "auth": true
       },
       {"name": "/settings/account", "screen": AccountScreen(), "auth": true},

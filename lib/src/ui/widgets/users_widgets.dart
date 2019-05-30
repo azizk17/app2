@@ -40,16 +40,15 @@ class EmailFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       key: this.key,
-      decoration:
-          InputDecoration(labelText: AppLocalizations.of(context).email),
+      decoration: InputDecoration(hintText: AppLocalizations.of(context).email),
       autofocus: this.autofocus,
       initialValue: this.initialValue,
       controller: this.controller,
-      validator: _validator,
+      validator: (val) => _validator(context, val),
     );
   }
 
-  String _validator(String val) {
+  String _validator(BuildContext context, String val) {
     if (val.length > 4) {
       return "EMAIL IS NOT";
     }

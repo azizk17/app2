@@ -17,26 +17,26 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(builder: (_) => LocaleBloc()),
+        ChangeNotifierProvider(builder: (_) => PermissionsState()),
         ChangeNotifierProvider(builder: (_) => AppState()),
         ChangeNotifierProvider(builder: (_) => AuthState()),
         ChangeNotifierProvider(builder: (_) => UsersState()),
-        
       ],
       child: MaterialApp(
         // ? debug
         showPerformanceOverlay: false,
         locale: Locale('en', ''),
-      localizationsDelegates: [
-        const AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('ar', 'SA'), // Arabic
-        const Locale('en', 'US'), // English
-      ],
-      title: 'Flutter Demo',
-      theme: jeddTheme,
+        localizationsDelegates: [
+          const AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('ar', 'SA'), // Arabic
+          const Locale('en', 'US'), // English
+        ],
+        title: 'Flutter Demo',
+        theme: jeddTheme,
         home: HomeScreen(),
         onGenerateRoute: routes,
       ),

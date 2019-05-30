@@ -26,7 +26,7 @@ class AccountScreen extends StatelessWidget {
   _addTolist(BuildContext context) {
     final auth = Provider.of<AuthState>(context);
     return [
-      ListVeiwItemModel.section(),
+      // ListVeiwItemModel.section(),
       ListVeiwItemModel(
         title: AppLocalizations.of(context).name,
         onTap: () =>

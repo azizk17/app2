@@ -9,6 +9,8 @@ class DefalutLayout extends StatelessWidget {
   final Widget title;
   final Widget content;
   final EdgeInsetsGeometry padding;
+  final SnackBar snackBar;
+  final Function showSnackBar;
 
   /**
    *  # default Schffold parameters
@@ -51,6 +53,8 @@ class DefalutLayout extends StatelessWidget {
     this.resizeToAvoidBottomInset,
     this.primary = true,
     this.extendBody = false,
+    this.snackBar,
+    this.showSnackBar,
     //defult
   })  : assert(
           appBar == null || title == null,

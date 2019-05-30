@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 /**
  * 
- *  General App Configrations and settings
+ *  Notifications App Configrations and settings
  * 
  */
 
-class GeneralScreen extends StatelessWidget {
+class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefalutLayout(
       title: Text(AppLocalizations.of(context).settings),
       content: Center(
-        child: Text("General Settings", textScaleFactor: 2.2,),
+        child: Text("Notifications Settings", textScaleFactor: 2.2,),
       ),
     );
   }

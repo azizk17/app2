@@ -19,7 +19,6 @@ class EmailEditScreen extends FormEditingLayout {
         _emailController = TextEditingController(text: auth.authUser.email);
 
         return [
-          TextFormField(),
           EmailFormField(
             controller: _emailController,
           ),

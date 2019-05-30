@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     var authProvider = Provider.of<AuthState>(context);
     final _list = [
       {"text": "Home", "route": "/", "icon": ""},
-      {"text": "About", "route": "/about", "icon": ""},
+      {"text": "About", "route": "/settings/about", "icon": ""},
       {"text": "Login", "route": "/signin", "icon": ""},
       {"text": "Register", "route": "/signup", "icon": ""},
       {"text": "Private", "route": "/private", "icon": "", "auth": true}
@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
         Row(
           children: <Widget>[
             Expanded(
-              child: Card(
+              child: Container(
                   child: ListTile(
                     title: Text(
                       AppLocalizations.of(context).appTitle,
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                     contentPadding: EdgeInsets.only(
                         top: 40, left: 10, bottom: 10, right: 10),
                   ),
-                  color: Theme.of(context).primaryColor),
+                  color: Colors.black26),
             ),
           ],
         ),

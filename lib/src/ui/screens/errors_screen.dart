@@ -1,4 +1,4 @@
-import 'package:app2/src/ui/layouts/center_layout.dart';
+import 'package:app2/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class NotFoundScreen extends StatelessWidget {

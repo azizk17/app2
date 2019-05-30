@@ -1,11 +1,12 @@
+import 'package:app2/src/validations/errors_validation.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 import '../serializers/serializers.dart';
-
+import './model.dart';
 part 'user_model.g.dart';
 
-abstract class User implements Built<User, UserBuilder> {
+abstract class User with BaseModel implements Built<User, UserBuilder> {
   static Serializer<User> get serializer => _$userSerializer;
 
   @nullable
@@ -38,5 +39,11 @@ abstract class User implements Built<User, UserBuilder> {
 
     assert(dockWithDocID.id != null);
     return dockWithDocID;
+  }
+  FormError validate() {
+    print("WHAT IS THIS? " + this.toString());
+    if (this.email.length > 3) {
+      return FormError(key: 'email', message: 'Email is to long');
+    }
   }
 }

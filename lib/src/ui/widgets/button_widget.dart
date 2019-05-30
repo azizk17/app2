@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BtnWidget extends StatelessWidget {
+class Btn extends StatelessWidget {
   final bool loading;
   final Color color;
   final Function onPressed;
   final bool rounded;
   final Widget child;
   final bool enabled;
-  const BtnWidget(
+  const Btn(
       {this.loading = false,
       this.color,
       this.onPressed,

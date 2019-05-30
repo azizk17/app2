@@ -5,6 +5,7 @@ enum AuthError {
   EmailNotValid,
   PasswordNotValid,
   WeakPassword,
+  NotAuthorized,
   NetworkError,
   UnknownError,
 }

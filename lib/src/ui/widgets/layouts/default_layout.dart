@@ -33,7 +33,7 @@ class DefalutLayout extends StatelessWidget {
   const DefalutLayout({
     this.title,
     this.content,
-    this.padding = const EdgeInsets.only(left: 10, right: 10),
+    this.padding = const EdgeInsets.all(0),
 
     // Default Scaffold
     this.appBar,
@@ -100,11 +100,34 @@ class DefalutLayout extends StatelessWidget {
       return this.body;
     }
     return Container(
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height ,
+        maxWidth: MediaQuery.of(context).size.width,
+        minHeight: MediaQuery.of(context).size.height,
+        minWidth: MediaQuery.of(context).size.width,
+      ),
       padding: this.padding,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-          color: Colors.white),
-      child: this.content,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        color: Colors.white,
+      ),
+      child: ClipRRect(
+        child: this.content,
+        clipBehavior: Clip.antiAlias,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      ),
     );
+  }
+}
+
+class MyClipper extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    return new Rect.fromLTWH(0.0, 0.0, size.width, size.height);
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Rect> oldClipper) {
+    return false;
   }
 }

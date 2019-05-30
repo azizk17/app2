@@ -1,8 +1,13 @@
 import 'dart:async';
 import 'package:app2/src/app/enums/enums.dart';
 import 'package:app2/src/app/enums/users_enum.dart';
+import 'package:app2/src/states/app_state.dart';
 import 'package:app2/src/states/base_state.dart';
 import 'package:app2/src/repository/repository.dart';
+import 'package:app2/src/states/users_state.dart';
+import 'package:app2/src/validations/base_validation.dart';
+import 'package:app2/src/validations/validations.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app2/src/models/models.dart';
 import 'package:app2/src/app/enums/enums.dart';
@@ -55,6 +60,15 @@ class AuthState extends BaseState {
   Function get signIn => _signIn;
   Function get signOut => _signOut;
   bool get isLoggendIn => _authUser != null ? true : false;
+
+  void listenToError() {}
+
+  void validateForm() {
+    var user =
+        User().rebuild((b) => [b..name = "wewfrwe", b..email = "aa@wss.ce"]);
+    var v = UsersValidation().validate(user, fields: ["email", "name"]);
+    notifyListeners();
+  }
 
   void _setAuthError(AuthError error) {
     _erros = error;
@@ -128,6 +142,24 @@ class AuthState extends BaseState {
     }
   }
 
+  bool isOwner(String id) {
+    if (authUser.id != id) {
+      return false;
+    }
+    return true;
+  }
+
+  // update auth user
+  update({@required String id, @required User user}) async {
+    if (!isOwner(id)) {
+      return AuthError.NotAuthorized;
+    }
+    await this._authRepo.update(id: id, user: user);
+  }
+
+  // remove account
+  remove() {}
+
   /*
    *  Handle Api calls exceptions
    */
@@ -175,7 +207,7 @@ class AuthState extends BaseState {
           b..email = 'aziz@aziz.com',
           b..phone = '000989732',
         ]);
-   await Future.delayed(const Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(milliseconds: 2000));
     var status = AuthStatus.Successful; // or faild
     _setAuthStatus(status);
     _setAuthUser(u);

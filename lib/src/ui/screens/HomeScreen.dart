@@ -1,19 +1,22 @@
 import 'package:app2/src/locale.dart';
 import 'package:app2/src/states/auth_state.dart';
+import 'package:app2/src/ui/widgets/layouts/default_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefalutLayout(
       appBar: AppBar(
-        title: Text("HOME"),
+        title: Text(AppLocalizations.of(context).appTitle),
       ),
       drawer: Drawer(child: _drawerList(context)),
-      body: Text(
-        "Home",
-        textScaleFactor: 4.2,
+      content: Center(
+        child: Text(
+          AppLocalizations.of(context).hello,
+          textScaleFactor: 4.2,
+        ),
       ),
     );
   }
@@ -104,7 +107,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.settings),
             iconSize: 30,
-            onPressed: () => Navigator.pushNamed(context, '/settings'), 
+            onPressed: () => Navigator.pushNamed(context, '/settings'),
           )
         }
       ],

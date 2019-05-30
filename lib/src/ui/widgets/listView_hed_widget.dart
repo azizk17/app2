@@ -17,15 +17,15 @@ class ListViewSettings extends StatelessWidget {
       child: ListView.separated(
         itemCount: this.items.length,
         scrollDirection: Axis.vertical,
-        shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
+          // ? Section 
           if (items[index].section != null) {
-            print("hs sections " + items[index].section);
             return Container(
-              decoration: BoxDecoration(color: greyLight),
-              padding: EdgeInsets.only(top: 2, bottom: 2),
+              decoration: BoxDecoration(color: greyLight,),
+              padding: EdgeInsets.only(top: 1, bottom: 1),
               child: ListTile(
-                title: Text(items[index].section,
+                contentPadding: EdgeInsets.all(0),
+                title: Text(items[index].section ,
                     style: Theme.of(context)
                         .textTheme
                         .title
@@ -37,14 +37,18 @@ class ListViewSettings extends StatelessWidget {
             );
           }
           // ? Render a list item
-          return ListTile(
-            title: Text(items[index].title),
-            leading: _leading(items[index]),
-            subtitle: items[index].subtitle != null
-                ? Text(items[index].subtitle)
-                : null,
-            trailing: _trailing(items[index]),
-            onTap: items[index].onTap,
+          return Container(
+          
+            child: ListTile(
+              title: Text(items[index].title),
+              leading: _leading(items[index]),
+              subtitle: items[index].subtitle != null
+                  ? Text(items[index].subtitle)
+                  : null,
+              trailing: _trailing(items[index]),
+              onTap: items[index].onTap,
+              
+            ),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

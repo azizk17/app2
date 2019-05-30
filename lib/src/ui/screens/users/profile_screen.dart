@@ -1,7 +1,6 @@
 import 'package:app2/src/locale.dart';
 import 'package:app2/src/models/models.dart';
 import 'package:app2/src/states/states.dart';
-import 'package:app2/src/ui/layouts/center_layout.dart';
 import 'package:app2/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

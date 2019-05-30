@@ -4,8 +4,9 @@
 - [ ] pin vervication
 - [ ] firestore
 - Edit and update profile 
-  - [ ] data
+  - [x] data
   - [ ] profile image
+  - [ ] Validation 
 - client DB 
 - Notications
   - [ ] Android

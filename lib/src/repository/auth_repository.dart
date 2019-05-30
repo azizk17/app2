@@ -1,5 +1,6 @@
 import 'package:app2/src/app/enums/enums.dart';
 import 'package:app2/src/models/models.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 import '../services/firebase/users_firebase.dart';
@@ -89,5 +90,39 @@ class AuthRepository {
     return _userBasicAuthInfo;
 
     // get user
+  }
+
+  // update auth info
+  update({@required String id, @required user}) async {
+    try {
+      this._authService.updateAuthProfile(id: id, user: user);
+    } catch (e) {
+      _getException(e);
+    }
+  }
+
+  AuthError _getException(Exception e) {
+    print("ERR: " + e.toString());
+    if (e is PlatformException) {
+      print(e.code + " " + e.message);
+      switch (e.code) {
+        case "ERROR_WRONG_PASSWORD":
+          return AuthError.PasswordNotValid;
+          break;
+        case "ERROR_USER_NOT_FOUND":
+          return AuthError.UserNotFound;
+          break;
+        case "ERROR_INVALID_EMAIL":
+          return AuthError.EmailNotValid;
+          break;
+        case "ERROR_NOT_AUTHORIZED":
+          return AuthError.NotAuthorized;
+          break;
+        default:
+          return AuthError.UnknownError;
+      }
+    } else {
+      return AuthError.UnknownError;
+    }
   }
 }

@@ -3,18 +3,19 @@ import 'package:app2/src/states/states.dart';
 import 'package:app2/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:app2/src/themes/jeddTheme.dart';
 
-class SettingsListScreen extends StatelessWidget {
+
+/**
+ * 
+ *    A list of app settings and pages like About page
+ * 
+ */
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     this._addTolist(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('settings'),
-      ),
-      backgroundColor: greyLight,
-      body: Container(
+    return DefalutLayout(
+      content: Container(
         color: Colors.white,
         child: ListViewSettings(this._addTolist(context)),
       ),
@@ -40,6 +41,8 @@ class SettingsListScreen extends StatelessWidget {
         title: AppLocalizations.of(context).notifications,
         icon: Icons.notifications,
         bgColor: Colors.redAccent,
+        onTap: () => Navigator.pushNamed(context, "/settings/notifications"),
+
       ),
       ListVeiwItemModel.section(),
       // section 2

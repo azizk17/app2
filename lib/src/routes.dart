@@ -1,13 +1,9 @@
-import 'package:app2/src/states/states.dart';
-import 'package:app2/src/ui/screens/settings/account_edit_screen.dart';
-import 'package:app2/src/ui/screens/settings/edit_filed_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:common/common.dart';
-// // import 'package:mobt/src/providers/story_provider.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:app2/src/ui/screens/screens.dart';
+import 'package:app2/src/states/states.dart';
 
 List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
       // name , screen , auth , guest, roles
@@ -18,13 +14,13 @@ List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
       {"name": "/private", "screen": PrivateScreen(), "auth": true},
       // users
       // ? Settings
-      {"name": "/settings", "screen": SettingsListScreen(), "auth": true},
-      {"name": "/settings/app", "screen": AppSettingsScreen(), "auth": true},
+      {"name": "/settings", "screen": SettingsScreen(), "auth": true},
       {
-        "name": "/settings/account",
-        "screen": AccountSettingsScreen(),
+        "name": "/settings/app",
+        "screen": GeneralScreen(),
         "auth": true
       },
+      {"name": "/settings/account", "screen": AccountScreen(), "auth": true},
       {
         "name": "/settings/account/edit-email",
         "screen": EmailEditScreen(),

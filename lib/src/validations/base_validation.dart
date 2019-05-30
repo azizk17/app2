@@ -1,11 +1,19 @@
+import 'package:app2/src/models/model.dart';
 import 'package:app2/src/models/models.dart';
 import 'package:app2/src/validations/errors_validation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
 
-abstract class BaseValidation {
-  Map<String, FormError> _errors;
+class BaseValidation<T extends BaseModel> {
+  Map<String, FormError> _errors = {};
 
-  Map<String, FormError> errors;
+  Map<String, FormError> get errors => _errors;
+
+  BehaviorSubject<Map<String, FormError>> _errorsController = BehaviorSubject();
+
+  Stream get getErrors => _errorsController.stream;
+
+  Function get addSingleError => _errorsController.sink.add;
 
   // factory BaseValidation._() => null;
 
@@ -14,6 +22,10 @@ abstract class BaseValidation {
       return _errors[field];
     }
     return null;
+  }
+
+  void teStream() {
+    var b = getErrors.listen((data) => print(data.toString()));
   }
 
   bool hasError(String feild) {
@@ -41,17 +53,19 @@ abstract class BaseValidation {
       if (b.contains(f)) {
         // check for values are valid
         // errors are added to errors list
-        this.check(f, user);
+        var e = this.check(f, user);
         // check error list
-
+        print("validate item" + f.toString());
+        if (e != null) {
+          print(" item has errorx" + e.toString());
+addError(key: e.key, message: e.message, code: e.code);
+          return {e.key: e};
+        }
         // print("ERROS" + _fErrors.toString());
       } else {
         //
         throw new FlutterError("$f field is missing");
       }
-    }
-    if (this._errors != null) {
-      return this._errors;
     }
     return null;
   }
@@ -66,9 +80,15 @@ abstract class BaseValidation {
   }
 
   void _removeError(FormError e) {}
-  void check(String field, User user) {}
+  FormError check(String field, User user) {
+    return FormError(key: field, message: "Not goooos", code: "EmailNOTVALID");
+  }
 
   Iterable<String> _getKeys(User user) {
     return user.toJson().keys;
+  }
+
+  void rest() {
+    // remove all
   }
 }

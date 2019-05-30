@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-class AppSettingsBloc extends ChangeNotifier{
+class AppState extends ChangeNotifier{
   Map<String, String> settings;
 
   get getSettings => settings;

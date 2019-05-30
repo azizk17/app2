@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppSettingsScreen extends StatelessWidget {
+
+/**
+ * 
+ *  General App Configrations and settings
+ * 
+ */
+
+class GeneralScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

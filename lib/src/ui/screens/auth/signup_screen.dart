@@ -1,7 +1,7 @@
 import 'package:app2/src/app/enums/enums.dart';
 import 'package:app2/src/states/states.dart';
 import 'package:app2/src/locale.dart';
-import 'package:app2/src/ui/layouts/center_layout.dart';
+import 'package:app2/src/ui/widgets/widgets.dart';
 import 'package:app2/src/validations/users_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

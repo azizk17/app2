@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:app2/src/app/enums/users_enum.dart';
 import 'package:app2/src/states/states.dart';
 import 'package:app2/src/locale.dart';
-import 'package:app2/src/ui/layouts/center_layout.dart';
+import 'package:app2/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';

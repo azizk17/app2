@@ -1,10 +1,12 @@
 import 'package:app2/src/models/models.dart';
+import 'package:app2/src/repository/repository.dart';
 import 'package:app2/src/states/base_state.dart';
 import 'package:app2/src/validations/errors_validation.dart';
 import 'package:app2/src/validations/validations.dart';
 import 'package:flutter/material.dart';
 
 class UsersState extends BaseState {
+  UsersRepository _repo = UsersRepository();
   String name;
   String email;
   String phoneNumber;
@@ -23,7 +25,6 @@ class UsersState extends BaseState {
   get validate => validation.validate;
   get errors => validation.errors;
 
-
   void _setError(bool e) {
     _error = e;
   }
@@ -41,6 +42,11 @@ class UsersState extends BaseState {
   UsersState();
   Iterable<String> _getKeys(User user) {
     return user.toJson().keys;
+  }
+
+  update(User user) async {
+    // validate isOnwer
+    var u = await this._repo.update(user);
   }
 
   @override

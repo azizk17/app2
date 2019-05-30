@@ -5,9 +5,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class AuthFirebase {
+  get authUser =>
+      FirebaseAuth.instance.currentUser().then((u) => this._parse(u));
+  Stream get onAuthChanged =>
+      FirebaseAuth.instance.onAuthStateChanged.map((u) => this._parse(u));
   AuthFirebase() {
     FirebaseAuth.instance.setLanguageCode("ar");
   }
+
   User _parse(FirebaseUser fUser) {
     return User((b) => [
           b..id = fUser.uid,
@@ -46,7 +51,6 @@ class AuthFirebase {
     return _parse(user);
   }
 
-
   Future<User> signInWithEmailAndPassword(
       {String email, String password}) async {
     FirebaseUser user = await FirebaseAuth.instance
@@ -55,5 +59,24 @@ class AuthFirebase {
     return _parse(user);
   }
 
-  Future<User> updateAuthProfile() {}
+  Future<void> updateAuthProfile(
+      {@required String id, @required User user}) async {
+    FirebaseUser currentUser = await FirebaseAuth.instance.currentUser();
+    UserUpdateInfo u = UserUpdateInfo();
+    // name - photoURL
+    if (user.name != null) {
+      u.displayName = user.name;
+    }
+    if (user.avatar != null) {
+      u.photoUrl = user.avatar;
+    }
+    return await currentUser.updateProfile(u);
+  }
+
+  Future<bool> changePassword(String id, String password) {}
+  Future<bool> changeEmail(String id, String email) {}
+  Future<bool> verifyPhoneNumber(String id, String phoneNumber) {}
+  Future<bool> verfiyEmail(String id, String email) {}
+  Future<bool> isEmailVerified(String id, String email) {}
+  Future<bool> isPhoneVerified(String id, String phone) {}
 }

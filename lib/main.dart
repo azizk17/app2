@@ -1,4 +1,6 @@
+import 'package:app2/src/models/model.dart';
 import 'package:app2/src/routes.dart';
+import 'package:app2/src/states/validation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './src/states/states.dart';
@@ -6,6 +8,7 @@ import './src/ui/screens/screens.dart';
 import './src/themes/jeddTheme.dart' show jeddTheme;
 import './src/locale.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() => runApp(App());
 
 class App extends StatelessWidget {
@@ -14,9 +17,10 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(builder: (_) => LocaleBloc()),
-        ChangeNotifierProvider(builder: (_) => AppSettingsBloc()),
+        ChangeNotifierProvider(builder: (_) => AppState()),
         ChangeNotifierProvider(builder: (_) => AuthState()),
         ChangeNotifierProvider(builder: (_) => UsersState()),
+        
       ],
       child: MaterialApp(
         // ? debug

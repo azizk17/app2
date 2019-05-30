@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 
 class InputField extends StatelessWidget {
+  final Key key;
   final String value;
   final String attr;
   final String label;
   final String error;
   final bool enabled;
   final Function onChanged;
+  final Function validator;
   final id = InputDecoration(
     counter: Text("a"),
     counterText: "counter",
   );
-  InputField(
-      {this.value,
-      this.label,
-      this.attr,
-      this.error,
-      this.enabled = true,
-      this.onChanged});
+  InputField({
+    this.key,
+    this.value,
+    this.label,
+    this.attr,
+    this.error,
+    this.validator,
+    this.enabled = true,
+    this.onChanged,
+
+  });
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onChanged: onChanged,
+    return TextFormField(
       controller: TextEditingController(text: this.value),
       decoration: InputDecoration(
         // labelText: this.label,

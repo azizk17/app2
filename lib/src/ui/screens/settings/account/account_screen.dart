@@ -30,21 +30,21 @@ class AccountScreen extends StatelessWidget {
       ListVeiwItemModel(
         title: AppLocalizations.of(context).name,
         onTap: () =>
-            Navigator.pushNamed(context, "/settings/account/edit-email"),
+            Navigator.pushNamed(context, "/settings/account/edit-name"),
         sideText: auth.authUser.name,
       ),
       ListVeiwItemModel(
         title: AppLocalizations.of(context).phone,
-        onTap: () => Navigator.pushNamed(context, "/settings/app"),
+        onTap: () => Navigator.pushNamed(context, "/settings/account/edit-phone"),
         sideText: auth.authUser.phone,
       ),
       ListVeiwItemModel(
           title: AppLocalizations.of(context).email,
-          onTap: () => Navigator.pushNamed(context, "/settings/app"),
+          onTap: () => Navigator.pushNamed(context, "/settings/account/edit-email"),
           sideText: auth.authUser.email),
       ListVeiwItemModel(
         title: AppLocalizations.of(context).password,
-        onTap: () => Navigator.pushNamed(context, "/settings/app"),
+        onTap: () => Navigator.pushNamed(context, "/settings/account/edit-password"),
         showNextIcon: true,
       ),
     ];

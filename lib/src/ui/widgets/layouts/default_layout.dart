@@ -11,6 +11,7 @@ class DefalutLayout extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final SnackBar snackBar;
   final Function showSnackBar;
+  final BorderRadius radius;
 
   /**
    *  # default Schffold parameters
@@ -36,6 +37,7 @@ class DefalutLayout extends StatelessWidget {
     this.title,
     this.content,
     this.padding = const EdgeInsets.all(0),
+    this.radius = const BorderRadius.vertical(top: Radius.circular(13)),
 
     // Default Scaffold
     this.appBar,
@@ -105,21 +107,17 @@ class DefalutLayout extends StatelessWidget {
     }
     return Container(
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height ,
+        maxHeight: MediaQuery.of(context).size.height,
         maxWidth: MediaQuery.of(context).size.width,
         minHeight: MediaQuery.of(context).size.height,
         minWidth: MediaQuery.of(context).size.width,
       ),
       padding: this.padding,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        borderRadius: this.radius,
         color: Colors.white,
       ),
-      child: ClipRRect(
-        child: this.content,
-        clipBehavior: Clip.antiAlias,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-      ),
+      child: this.content,
     );
   }
 }

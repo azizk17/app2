@@ -54,3 +54,35 @@ class EmailFormField extends StatelessWidget {
     }
   }
 }
+
+class NameInput extends StatelessWidget {
+  final Key key;
+  final String initialValue;
+  final bool autofocus;
+  final TextEditingController controller;
+  NameInput({
+    this.key,
+    this.initialValue,
+    this.autofocus = false,
+    this.controller,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      key: this.key,
+      decoration: InputDecoration(
+        hintText: AppLocalizations.of(context).name,
+      ),
+      autofocus: this.autofocus,
+      initialValue: this.initialValue,
+      controller: this.controller,
+      validator: (val) => _validator(context, val),
+    );
+  }
+
+  String _validator(BuildContext context, String val) {
+    if (val.length > 36) {
+      return "Name is very long";
+    }
+  }
+}

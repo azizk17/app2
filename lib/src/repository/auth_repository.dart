@@ -18,6 +18,7 @@ class AuthRepository {
   AuthRepository() {}
 
   Future<User> get authUser => _authUser();
+  Future<void> get signout => _authService.signout();
 
   Future<User> _authUser() async {
     return await _authService.getCurrentUser().then((u) => User((b) => [
@@ -93,9 +94,9 @@ class AuthRepository {
   }
 
   // update auth info
-  update({@required String id, @required user}) async {
+  update({@required user}) async {
     try {
-      this._authService.updateAuthProfile(id: id, user: user);
+      this._authService.updateAuthProfile(user: user);
     } catch (e) {
       _getException(e);
     }

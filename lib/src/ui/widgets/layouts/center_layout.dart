@@ -82,11 +82,14 @@ class CenterLayout extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height / 1.6,
         maxWidth: MediaQuery.of(context).size.width / 1.13,
-        minHeight: MediaQuery.of(context).size.height / 1.6,
-        minWidth: MediaQuery.of(context).size.width / 1.13,
+        // minHeight: MediaQuery.of(context).size.height / 1,
+        // minWidth: MediaQuery.of(context).size.width / 1,
       ),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
+
+
+        
           color: this.boxColor,
           borderRadius: BorderRadius.all(Radius.circular(0))),
       child: SingleChildScrollView(
@@ -111,6 +114,7 @@ class CenterLayout extends StatelessWidget {
       child: Center(
         
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             SizedBox(height: 55),
             _hed(context),

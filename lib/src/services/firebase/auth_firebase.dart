@@ -59,9 +59,9 @@ class AuthFirebase {
     return _parse(user);
   }
 
-  Future<void> updateAuthProfile(
-      {@required String id, @required User user}) async {
+  Future<void> updateAuthProfile({@required User user}) async {
     FirebaseUser currentUser = await FirebaseAuth.instance.currentUser();
+    print("CURREENT USER " + currentUser.displayName);
     UserUpdateInfo u = UserUpdateInfo();
     // name - photoURL
     if (user.name != null) {
@@ -70,7 +70,12 @@ class AuthFirebase {
     if (user.avatar != null) {
       u.photoUrl = user.avatar;
     }
-    return await currentUser.updateProfile(u);
+    try {
+      await currentUser.updateProfile(u);
+      await currentUser.reload();
+    } catch (e) {
+      print("EXCEPTIONS " + e.toString());
+    }
   }
 
   Future<bool> changePassword(String id, String password) {}
@@ -79,4 +84,7 @@ class AuthFirebase {
   Future<bool> verfiyEmail(String id, String email) {}
   Future<bool> isEmailVerified(String id, String email) {}
   Future<bool> isPhoneVerified(String id, String phone) {}
+  Future<void> signout() async {
+    await FirebaseAuth.instance.signOut();
+  }
 }

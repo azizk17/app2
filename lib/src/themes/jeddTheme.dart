@@ -19,7 +19,7 @@ const jeddBackgroundWhite = Colors.white;
 const greyLight = Color.fromRGBO(236, 240, 241, 2);
 
 // ? Fonts
-const double fontSize = 14.0;
+const double fontSize = 11.0;
 final TextStyle textStyle = TextStyle(
   color: jeddPrimary,
   fontSize: fontSize,
@@ -79,13 +79,13 @@ TextTheme _buildJeddTextTheme(TextTheme base) {
         headline: base.headline.copyWith(
           fontWeight: FontWeight.w500,
         ),
-        title: base.title.copyWith(fontSize: 18.0),
+        title: base.title.copyWith(fontSize: 13.0),
         caption: base.caption.copyWith(
           fontWeight: FontWeight.w400,
-          fontSize: 13.0,
+          fontSize: 11.0,
         ),
       )
-      .apply(
+      .apply(  
         // fontFamily: 'AraJozoor',
         displayColor: jeddAccent,
         bodyColor: jeddCanvasColor,

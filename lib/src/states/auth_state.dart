@@ -92,8 +92,10 @@ class AuthState extends BaseState {
   }
   void _signOut() {
     // TODO: repo call to remove user from local db
+    this._authRepo.signout;
     this.reset();
     this._setAuthUser(null);
+
     notifyListeners();
   }
 
@@ -150,11 +152,11 @@ class AuthState extends BaseState {
   }
 
   // update auth user
-  update({@required String id, @required User user}) async {
-    if (!isOwner(id)) {
-      return AuthError.NotAuthorized;
-    }
-    await this._authRepo.update(id: id, user: user);
+  update({@required User user}) async {
+    // if (!isOwner(user.id)) {
+    //   return AuthError.NotAuthorized;
+    // }
+    await this._authRepo.update(user: user);
   }
 
   // remove account

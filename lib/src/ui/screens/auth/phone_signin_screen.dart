@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 class PhoneSignin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CenterLayout(childern: <Widget>[
+    return CenterLayout(
+      title: Text("s"),
+      childern: <Widget>[
+
       
+      Text("Phone login")
       
     ],);
   }

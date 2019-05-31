@@ -146,7 +146,7 @@ class SigninScreen extends StatelessWidget {
       children: <Widget>[
         InkWell(
           child: Text('${AppLocalizations.of(context).passwordRest}'),
-          onTap: () => null,
+          onTap: () => Navigator.pushNamed(context, '/auth/password-reset'),
         )
       ],
     );

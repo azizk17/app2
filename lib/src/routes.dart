@@ -8,8 +8,11 @@ import 'package:app2/src/states/states.dart';
 List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
       // name , screen , auth , guest, roles
       {"name": "/", "screen": HomeScreen(), "auth": false, "roles": []},
-      {"name": "/signin", "screen": SigninScreen(), "guest": true},
-      {"name": "/sigup", "screen": SignupScreen(), "guest": true},
+      {"name": "/auth/signin", "screen": SigninScreen(), "guest": true},
+      {"name": "/auth/signup", "screen": SignupScreen(), "guest": true},
+      {"name": "/auth/password-reset", "screen": PasswordRest(), "guest": true},
+      {"name": "/auth/phone-signin", "screen": PhoneSignin(), "guest": true},
+
       {"name": "/private", "screen": PrivateScreen(), "auth": true},
       // users
       // ? Settings
@@ -34,6 +37,8 @@ List<Map<String, dynamic>> _r(RouteSettings s) => <Map<String, dynamic>>[
         "screen": EmailEditScreen(),
         "auth": true
       },
+      // ? Settings/Account
+      {"name": "/settings/account/edit-name", "screen": NameEditScreen(), "auth": true},
 
       // ? last elememnt must be not found route
       {"name": "*", "screen": NotFoundScreen()}

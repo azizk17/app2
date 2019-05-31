@@ -26,8 +26,9 @@ class HomeScreen extends StatelessWidget {
     final _list = [
       {"text": "Home", "route": "/", "icon": ""},
       {"text": "About", "route": "/settings/about", "icon": ""},
-      {"text": "Login", "route": "/signin", "icon": ""},
-      {"text": "Register", "route": "/signup", "icon": ""},
+      {"text": "Login", "route": "/auth/signin", "icon": ""},
+      {"text": "Register", "route": "/auth/signup", "icon": ""},
+            {"text": "Phone", "route": "/auth/phone-signin", "icon": ""},
       {"text": "Private", "route": "/private", "icon": "", "auth": true}
     ];
 

@@ -4,15 +4,16 @@
 - [ ] pin vervication
 - [ ] firestore
 - Edit and update profile 
-  - [x] data
+  - [ ] data
   - [ ] profile image
-  - [ ] Validation 
+  - [x] Validation 
+    - [ ] Handel form state
 - client DB 
-- Notications
+- Nontications
   - [ ] Android
   - [ ] IOS 
 - [ ] one device per account
 - [ ] Permissions
 - [ ] Notifications
-- [ ] share
+- [x] share
 - [ ] multible devices per account

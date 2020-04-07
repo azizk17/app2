@@ -37,8 +37,9 @@ class AuthFirebase {
       String phoneNumber}) async {
     // create auth user
     print("DATA: " + email.toString());
-    FirebaseUser user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
+    FirebaseUser user = (await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password))
+        as FirebaseUser;
     // save user profile to auth user
     // var _u = UserUpdateInfo();
     // _u.displayName = name;
@@ -53,8 +54,8 @@ class AuthFirebase {
 
   Future<User> signInWithEmailAndPassword(
       {String email, String password}) async {
-    FirebaseUser user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
+    FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email, password: password)) as FirebaseUser;
     print(user.toString());
     return _parse(user);
   }

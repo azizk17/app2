@@ -16,11 +16,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(builder: (_) => LocaleBloc()),
-        ChangeNotifierProvider(builder: (_) => PermissionsState()),
-        ChangeNotifierProvider(builder: (_) => AppState()),
-        ChangeNotifierProvider(builder: (_) => AuthState()),
-        ChangeNotifierProvider(builder: (_) => UsersState()),
+        ChangeNotifierProvider(create: (_) => LocaleBloc()),
+        ChangeNotifierProvider(create: (_) => PermissionsState()),
+        ChangeNotifierProvider(create: (_) => AppState()),
+        ChangeNotifierProvider(create: (_) => AuthState()),
+        ChangeNotifierProvider(create: (_) => UsersState()),
       ],
       child: MaterialApp(
         // ? debug

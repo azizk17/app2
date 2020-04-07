@@ -21,12 +21,12 @@ class PermissionsScreen extends StatelessWidget {
         content: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("contacts " + per.contacts.toString()),
+            // Text("contacts " + per.contacts.toString()),
             Btn(
               child: Text("open permissions"),
-              onPressed: per.openAppSettings,
+              // onPressed: per.openAppSettings,
             )
           ],
-        ));
+        )); 
   }
 }

@@ -30,7 +30,7 @@ final TextStyle textStyle = TextStyle(
 final TextStyle errorTextStyle = textStyle.copyWith(color: jeddErrorRed);
 
 final InputDecoration inputDecoration = InputDecoration(
-  fillColor: Colors.green,
+  fillColor: Colors.blue,
   border: OutlineInputBorder(
       borderSide:
           BorderSide(color: jeddPrimary, width: 1.2, style: BorderStyle.solid)),

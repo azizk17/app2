@@ -87,15 +87,10 @@ class CenterLayout extends StatelessWidget {
       ),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-
-
-        
           color: this.boxColor,
           borderRadius: BorderRadius.all(Radius.circular(0))),
-      child: SingleChildScrollView(
-        child: Column(
-          children: this.childern,
-        ),
+      child: Column(
+        children: this.childern,
       ),
     );
   }
@@ -112,14 +107,14 @@ class CenterLayout extends StatelessWidget {
   Widget _mainLayout(BuildContext context) {
     return SingleChildScrollView(
       child: Center(
-        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             SizedBox(height: 55),
             _hed(context),
             SizedBox(height: 40),
-            _lightBox(context),
+            Text("HEY MAN"),
+            // _lightBox(context),
             // _bottom(context),
           ],
         ),
